@@ -1,5 +1,7 @@
 var timerEl = document.getElementById("time");
-var startEl = document.getElementById("start");
+var startBntEl = document.getElementById("start");
+var startScrEl = document.getElementById("start-screen");
+var questionScrEl = document.getElementById("questions");
 
 // Setting timer to start when Start button clicked and countdown
 
@@ -13,6 +15,8 @@ function countdown(){
     }, 1000);
 }
 
-startEl.addEventListener("click", function(){
+startBntEl.addEventListener("click", function(){
     countdown();
+    startScrEl.setAttribute("class", "hide");
+    questionScrEl.setAttribute("class", "");
 });
