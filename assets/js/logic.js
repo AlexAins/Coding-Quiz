@@ -1,4 +1,5 @@
 var timerEl = document.getElementById("time");
+var timerSection = document.getElementById("timerSection");
 var startBntEl = document.getElementById("start");
 var startScrEl = document.getElementById("start-screen");
 var questionScrEl = document.getElementById("questions");
@@ -56,6 +57,7 @@ questionChoicesEl.addEventListener("click", function(event){
 // start button event
 startBntEl.addEventListener("click", function(){
     countdown();
+    timerSection.setAttribute("class", "timer");
     startScrEl.setAttribute("class", "hide");
     questionScrEl.setAttribute("class", "");
     trial();
