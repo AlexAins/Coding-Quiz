@@ -7,12 +7,12 @@ var questionChoicesEl = document.getElementById("choices");
 
 
 // Setting timer to start when Start button clicked and countdown
-function countdown(){
-    var timeLeft = 100;
+var timer = 100;
 
+function countdown(){
     var timeInterval = setInterval(function(){
-        timeLeft--;
-        timerEl.textContent = timeLeft;
+        timer--;
+        timerEl.textContent = timer;
     }, 1000);
 }
 
