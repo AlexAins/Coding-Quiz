@@ -12,5 +12,5 @@ let qArr = [
 {question: "Which of these is a valid way of representing a color in CSS?", choices:["Valid Color Name","RGB Values","HEX Values","All of the Above"], answer: 3},
 ];
 
-// Shuffled Question array to 
+// Shuffled Question array
 let qArrShuffle = qArr.sort(() => Math.random() -0.5);

@@ -59,5 +59,13 @@ startBntEl.addEventListener("click", function(){
     startScrEl.setAttribute("class", "hide");
     questionScrEl.setAttribute("class", "");
     trial();
-    console.log(qArrShuffle);
+    console.log(qCount);
 });
+
+
+// Need to write a something for if qCount = 10 || timer = 0 to bring up end screen.
+// Need to write something to save timer left as score 
+// Need to write something to save score with initials 
+// Need to write something to connect saved scores onto High Score page and organize them in order of largest number
+// Need to write something to clear highscores
+// Possibly add new page to add extra questions
