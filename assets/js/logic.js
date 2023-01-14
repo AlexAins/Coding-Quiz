@@ -15,6 +15,12 @@ function countdown(){
     }, 1000);
 }
 
+// Function to shuffle question set
+function shuffle(){
+    qArr.sort(() => Math.random() -0.5);
+}
+
+
 startBntEl.addEventListener("click", function(){
     countdown();
     startScrEl.setAttribute("class", "hide");
