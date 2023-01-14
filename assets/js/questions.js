@@ -11,3 +11,6 @@ let qArr = [
 {question: "Which function of an Array removes the last element from the array and returns that element?", choices:["delete()","push()","pop()","remove()"], answer: 2},
 {question: "Which of these is a valid way of representing a color in CSS?", choices:["Valid Color Name","RGB Values","HEX Values","All of the Above"], answer: 3},
 ];
+
+// Shuffled Question array to 
+let qArrShuffle = qArr.sort(() => Math.random() -0.5);
