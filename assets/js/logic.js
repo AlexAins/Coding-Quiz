@@ -12,16 +12,19 @@ var endScrEl = document.getElementById("end-screen");
 
 // Setting timer to start when Start button clicked and countdown
 var timer = 100;
+var score = 0;
 
 function countdown(){
     var timeInterval = setInterval(function(){
         timer--;
         timerEl.textContent = timer;
 
-        // Brings up final screen when timer hits 0
-        if(timer === 0) {
+        // Brings up final screen when timer hits 0 or last question is answered
+        if(timer === 0 || qCount == 10) {
             questionScrEl.setAttribute("class", "hide");
-            endScrEl.setAttribute("class","");;
+            endScrEl.setAttribute("class","");
+            clearInterval(timeInterval);
+            score = timer;
         }
     }, 1000);
 }
@@ -64,6 +67,7 @@ questionChoicesEl.addEventListener("click", function(event){
         }
         // Statement to bring up final screen after 10 questions answered
         else if(qCount >= 9){
+            qCount++;
             questionScrEl.setAttribute("class", "hide");
             endScrEl.setAttribute("class","");
         }
