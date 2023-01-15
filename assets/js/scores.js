@@ -1,9 +1,6 @@
 // All variables connected to document
 var clearEl = document.getElementById("clear");
-
-
-// Getting score and initials to save to local storage
-
+var highscoresEl = document.getElementById("highscores");
 
 
 // Event listener to clear highscores when button pressed

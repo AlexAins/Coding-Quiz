@@ -28,7 +28,6 @@ function countdown(){
             endScrEl.setAttribute("class","");
             clearInterval(timeInterval);
             finalScoreEl.textContent = timer;
-            localStorage.setItem("score", timer);
         }
     }, 1000);
 }
@@ -88,12 +87,24 @@ questionChoicesEl.addEventListener("click", function(event){
 // Submitting Initials to local storage
 submitBntEl.addEventListener("click", function(){
     var finalInitials = initialsEl.value;
+    var finalScore = timer;
+    
+    var highScoreString = localStorage.getItem("hs");
+    var hsList = JSON.parse(highScoreString) ?? [];
 
+    var newScore = {
+        initials: finalInitials,
+        score: finalScore,
+    }
+   
     if (finalInitials === "") {
         alert(" Error \n Please include your initials!");
     }
     else{
-        localStorage.setItem("initials", finalInitials);
+        hsList.push(newScore);
+        hsList.sort((a,b) => b.score - a.score);
+        hsList.splice(10);
+        localStorage.setItem("hs", JSON.stringify(hsList));
         window.location = "highscores.html";
     }
 })
@@ -101,6 +112,5 @@ submitBntEl.addEventListener("click", function(){
 
 
 
-// Need to write something to save score with initials 
-// Need to write something to connect saved scores onto High Score page and organize them in order of largest number
-// Need to write something to clear highscores
+
+
