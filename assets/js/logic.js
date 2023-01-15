@@ -9,7 +9,8 @@ var questionChoicesEl = document.getElementById("choices");
 var feedbackEl = document.getElementById("feedback");
 var endScrEl = document.getElementById("end-screen");
 var finalScoreEl = document.getElementById("final-score");
-
+var correctSound = new Audio('./assets/sfx/correct.wav');
+var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
 
 // Setting timer to start when Start button clicked and countdown
 var timer = 100;
@@ -29,17 +30,19 @@ function countdown(){
     }, 1000);
 }
 
-// Function to print questions and answers on buttons
+// Function to print questions and answers on buttons up to 10 questions
 qCount = 0;
 
 function questions(){
-    questionTitleEl.textContent = qCount+1 +": " + qArrShuffle[qCount].question;
+    if(qCount <10){
+        questionTitleEl.textContent = qCount+1 +": " + qArrShuffle[qCount].question;
 
-    for (var i = 0; i < qArrShuffle[qCount].choices.length ; i++){
-        var choiceBtn = document.createElement("button");
-        choiceBtn.textContent = i+1 + ": " + qArrShuffle[qCount].choices[i];
-        questionChoicesEl.appendChild(choiceBtn);
-        choiceBtn.setAttribute("data-index", i);
+        for (var i = 0; i < qArrShuffle[qCount].choices.length ; i++){
+            var choiceBtn = document.createElement("button");
+            choiceBtn.textContent = i+1 + ": " + qArrShuffle[qCount].choices[i];
+            questionChoicesEl.appendChild(choiceBtn);
+            choiceBtn.setAttribute("data-index", i);
+        }
     }
 }
 
@@ -53,26 +56,23 @@ questionChoicesEl.addEventListener("click", function(event){
         feedbackEl.setAttribute("class","feedback");
 
         // Statement to see if button pressed is correct answer
-        if(index == qArrShuffle[qCount].answer && qCount < 9){
+        if(index == qArrShuffle[qCount].answer){
             qCount++;
             questions();
+            correctSound.play();
             feedbackEl.textContent = "Correct!";
         }
         // Statement to see if button press was incorrect 
-        else if(index != qArrShuffle[qCount].answer && qCount < 9){
+        else{
             qCount++;
             questions();
             timer -= 10;
+            incorrectSound.play();
             feedbackEl.textContent = "Wrong!";
-        }
-        // Statement to bring up final screen after 10 questions answered
-        else if(qCount >= 9){
-            qCount++;
-            questionScrEl.setAttribute("class", "hide");
-            endScrEl.setAttribute("class","");
         }
     }
 })
+
 
 // start button event
 startBntEl.addEventListener("click", function(){
@@ -87,6 +87,3 @@ startBntEl.addEventListener("click", function(){
 // Need to write something to save score with initials 
 // Need to write something to connect saved scores onto High Score page and organize them in order of largest number
 // Need to write something to clear highscores
-
-
-
