@@ -8,11 +8,11 @@ var questionTitleEl = document.getElementById("question-title");
 var questionChoicesEl = document.getElementById("choices");
 var feedbackEl = document.getElementById("feedback");
 var endScrEl = document.getElementById("end-screen");
+var finalScoreEl = document.getElementById("final-score");
 
 
 // Setting timer to start when Start button clicked and countdown
 var timer = 100;
-var score = 0;
 
 function countdown(){
     var timeInterval = setInterval(function(){
@@ -24,7 +24,7 @@ function countdown(){
             questionScrEl.setAttribute("class", "hide");
             endScrEl.setAttribute("class","");
             clearInterval(timeInterval);
-            score = timer;
+            finalScoreEl.textContent = timer;
         }
     }, 1000);
 }
@@ -84,7 +84,6 @@ startBntEl.addEventListener("click", function(){
 });
 
 
-// Need to write something to save timer left as score 
 // Need to write something to save score with initials 
 // Need to write something to connect saved scores onto High Score page and organize them in order of largest number
 // Need to write something to clear highscores
