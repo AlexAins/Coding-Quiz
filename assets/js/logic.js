@@ -1,3 +1,4 @@
+// All variables connected to document
 var timerEl = document.getElementById("time");
 var timerSection = document.getElementById("timerSection");
 var startBntEl = document.getElementById("start");
@@ -17,6 +18,7 @@ function countdown(){
         timer--;
         timerEl.textContent = timer;
 
+        // Brings up final screen when timer hits 0
         if(timer === 0) {
             questionScrEl.setAttribute("class", "hide");
             endScrEl.setAttribute("class","");;
@@ -24,14 +26,13 @@ function countdown(){
     }, 1000);
 }
 
-// Function to set first question
+// Function to print questions and answers on buttons
 qCount = 0;
 
 function questions(){
     questionTitleEl.textContent = qArrShuffle[qCount].question;
 
     for (var i = 0; i < qArrShuffle[qCount].choices.length ; i++){
-
         var choiceBtn = document.createElement("button");
         choiceBtn.textContent = i+1 + ": " + qArrShuffle[qCount].choices[i];
         questionChoicesEl.appendChild(choiceBtn);
@@ -39,24 +40,29 @@ function questions(){
     }
 }
 
-// Answer button press
+// Event listener for answer button press.
 questionChoicesEl.addEventListener("click", function(event){
+
+    // Checking it was a button being clicked
     if(event.target.matches("button")){
         var index = event.target.getAttribute("data-index");
         questionChoicesEl.innerHTML = "";
         feedbackEl.setAttribute("class","feedback");
 
+        // Statement to see if button pressed is correct answer
         if(index == qArrShuffle[qCount].answer && qCount < 9){
             qCount++;
             questions();
             feedbackEl.textContent = "Correct!";
         }
+        // Statement to see if button press was incorrect 
         else if(index != qArrShuffle[qCount].answer && qCount < 9){
             qCount++;
             questions();
             timer -= 10;
             feedbackEl.textContent = "Wrong!";
         }
+        // Statement to bring up final screen after 10 questions answered
         else if(qCount >= 9){
             questionScrEl.setAttribute("class", "hide");
             endScrEl.setAttribute("class","");
