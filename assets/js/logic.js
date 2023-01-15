@@ -30,7 +30,7 @@ function countdown(){
 qCount = 0;
 
 function questions(){
-    questionTitleEl.textContent = qArrShuffle[qCount].question;
+    questionTitleEl.textContent = qCount+1 +": " + qArrShuffle[qCount].question;
 
     for (var i = 0; i < qArrShuffle[qCount].choices.length ; i++){
         var choiceBtn = document.createElement("button");
@@ -84,6 +84,6 @@ startBntEl.addEventListener("click", function(){
 // Need to write something to save score with initials 
 // Need to write something to connect saved scores onto High Score page and organize them in order of largest number
 // Need to write something to clear highscores
-// Possibly add new page to add extra questions
+
 
 
