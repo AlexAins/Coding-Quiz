@@ -11,6 +11,8 @@ var endScrEl = document.getElementById("end-screen");
 var finalScoreEl = document.getElementById("final-score");
 var correctSound = new Audio('./assets/sfx/correct.wav');
 var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
+var initialsEl = document.getElementById("initials");
+var submitBntEl = document.getElementById("submit");
 
 // Setting timer to start when Start button clicked and countdown
 var timer = 100;
@@ -26,6 +28,7 @@ function countdown(){
             endScrEl.setAttribute("class","");
             clearInterval(timeInterval);
             finalScoreEl.textContent = timer;
+            localStorage.setItem("score", timer);
         }
     }, 1000);
 }
@@ -82,6 +85,18 @@ questionChoicesEl.addEventListener("click", function(event){
     }
 })
 
+// Submitting Initials to local storage
+submitBntEl.addEventListener("click", function(){
+    var finalInitials = initialsEl.value;
+
+    if (finalInitials === "") {
+        alert(" Error \n Please include your initials!");
+    }
+    else{
+        localStorage.setItem("initials", finalInitials);
+        window.location = "highscores.html";
+    }
+})
 
 
 
