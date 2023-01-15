@@ -10,7 +10,7 @@ let qArr = [
 {question: "How do you select an element with a specific class in CSS?", choices:["#","^",".","*"], answer: 2},
 {question: "Which function of an Array removes the last element from the array and returns that element?", choices:["delete()","push()","pop()","remove()"], answer: 2},
 {question: "Which of these is a valid way of representing a color in CSS?", choices:["Valid Color Name","RGB Values","HEX Values","All of the Above"], answer: 3},
-{question: "What CSS property is used to change the background color of an element", choices:["bgcolor","color","background-color","All of the Above"], answer: 2},
+{question: "What CSS property is used to change the background color of an element?", choices:["bgcolor","color","background-color","All of the Above"], answer: 2},
 ];
 
 // Shuffled Question array

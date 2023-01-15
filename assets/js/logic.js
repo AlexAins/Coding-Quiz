@@ -46,6 +46,15 @@ function questions(){
     }
 }
 
+// start button event
+startBntEl.addEventListener("click", function(){
+    countdown();
+    timerSection.setAttribute("class", "timer");
+    startScrEl.setAttribute("class", "hide");
+    questionScrEl.setAttribute("class", "");
+    questions();
+});
+
 // Event listener for answer button press.
 questionChoicesEl.addEventListener("click", function(event){
 
@@ -74,14 +83,7 @@ questionChoicesEl.addEventListener("click", function(event){
 })
 
 
-// start button event
-startBntEl.addEventListener("click", function(){
-    countdown();
-    timerSection.setAttribute("class", "timer");
-    startScrEl.setAttribute("class", "hide");
-    questionScrEl.setAttribute("class", "");
-    questions();
-});
+
 
 
 // Need to write something to save score with initials 
