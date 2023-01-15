@@ -23,7 +23,7 @@ function countdown(){
         timerEl.textContent = timer;
 
         // Brings up final screen when timer hits 0 or last question is answered
-        if(timer === 0 || qCount == 10) {
+        if(timer <= 0 || qCount == 10) {
             questionScrEl.setAttribute("class", "hide");
             endScrEl.setAttribute("class","");
             clearInterval(timeInterval);
@@ -77,7 +77,12 @@ questionChoicesEl.addEventListener("click", function(event){
         else{
             qCount++;
             questions();
-            timer -= 10;
+            if(timer > 10){
+                timer -= 10;
+            }
+            else {
+                timer = 0
+            }
             incorrectSound.play();
             feedbackEl.textContent = "Wrong!";
         }
