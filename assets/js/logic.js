@@ -16,13 +16,18 @@ function countdown(){
     var timeInterval = setInterval(function(){
         timer--;
         timerEl.textContent = timer;
+
+        if(timer === 0) {
+            questionScrEl.setAttribute("class", "hide");
+            endScrEl.setAttribute("class","");;
+        }
     }, 1000);
 }
 
-// Function to set first question - x will become a count for which question.
+// Function to set first question
 qCount = 0;
 
-function trial(){
+function questions(){
     questionTitleEl.textContent = qArrShuffle[qCount].question;
 
     for (var i = 0; i < qArrShuffle[qCount].choices.length ; i++){
@@ -43,12 +48,12 @@ questionChoicesEl.addEventListener("click", function(event){
 
         if(index == qArrShuffle[qCount].answer && qCount < 9){
             qCount++;
-            trial();
+            questions();
             feedbackEl.textContent = "Correct!";
         }
         else if(index != qArrShuffle[qCount].answer && qCount < 9){
             qCount++;
-            trial();
+            questions();
             timer -= 10;
             feedbackEl.textContent = "Wrong!";
         }
@@ -65,14 +70,14 @@ startBntEl.addEventListener("click", function(){
     timerSection.setAttribute("class", "timer");
     startScrEl.setAttribute("class", "hide");
     questionScrEl.setAttribute("class", "");
-    trial();
-    console.log(qCount);
+    questions();
 });
 
 
-// Need to write a something for if qCount = 10 || timer = 0 to bring up end screen.
 // Need to write something to save timer left as score 
 // Need to write something to save score with initials 
 // Need to write something to connect saved scores onto High Score page and organize them in order of largest number
 // Need to write something to clear highscores
 // Possibly add new page to add extra questions
+
+
