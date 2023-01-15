@@ -38,4 +38,4 @@ Below are some screenshots of the application:
 N/A
 
 ## Deployed Application
-Link to deployed webpage: https://alexains.github.io/Password-Generator/
+Link to deployed webpage: https://alexains.github.io/Coding-Quiz/ 
