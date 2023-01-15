@@ -6,6 +6,7 @@ var questionScrEl = document.getElementById("questions");
 var questionTitleEl = document.getElementById("question-title");
 var questionChoicesEl = document.getElementById("choices");
 var feedbackEl = document.getElementById("feedback");
+var endScrEl = document.getElementById("end-screen");
 
 
 // Setting timer to start when Start button clicked and countdown
@@ -40,16 +41,20 @@ questionChoicesEl.addEventListener("click", function(event){
         questionChoicesEl.innerHTML = "";
         feedbackEl.setAttribute("class","feedback");
 
-        if(index == qArrShuffle[qCount].answer){
+        if(index == qArrShuffle[qCount].answer && qCount < 9){
             qCount++;
             trial();
             feedbackEl.textContent = "Correct!";
         }
-        else{
+        else if(index != qArrShuffle[qCount].answer && qCount < 9){
             qCount++;
             trial();
             timer -= 10;
             feedbackEl.textContent = "Wrong!";
+        }
+        else if(qCount >= 9){
+            questionScrEl.setAttribute("class", "hide");
+            endScrEl.setAttribute("class","");
         }
     }
 })
