@@ -81,7 +81,7 @@ questionChoicesEl.addEventListener("click", function(event){
                 timer -= 10;
             }
             else {
-                timer = 0
+                timer = 1
             }
             incorrectSound.play();
             feedbackEl.textContent = "Wrong!";
